@@ -35,6 +35,9 @@ dependencies {
     // Data Binding
     kapt 'com.android.databinding:compiler:1.0'
 
+    // Http logger
+    compile 'com.squareup.okhttp:logging-interceptor:2.6.0'
+
     // Retrofit
     compile 'com.squareup.retrofit:retrofit:2.0.0-beta2'
     compile 'com.squareup.retrofit:adapter-rxjava:2.0.0-beta2'
