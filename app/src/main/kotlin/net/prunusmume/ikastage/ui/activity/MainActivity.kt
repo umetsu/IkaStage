@@ -2,8 +2,8 @@ package net.prunusmume.ikastage.ui.activity
 
 import android.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import com.trello.rxlifecycle.components.support.RxAppCompatActivity
 import net.prunusmume.ikastage.IkaStageApplication
 import net.prunusmume.ikastage.R
 import net.prunusmume.ikastage.databinding.ActivityMainBinding
@@ -14,7 +14,7 @@ import rx.schedulers.Schedulers
 import javax.inject.Inject
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : RxAppCompatActivity() {
 
     companion object {
         val TAG = MainActivity::class.java.simpleName
@@ -36,6 +36,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun loadSchedules() {
         mIkaStageService.schedules()
+                .compose(bindToLifecycle<MutableList<Schedule>>())
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(createLoadSuccessListener(),

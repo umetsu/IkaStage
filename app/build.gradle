@@ -33,7 +33,7 @@ dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
     // Data Binding
-    kapt 'com.android.databinding:compiler:1.0'
+    kapt 'com.android.databinding:compiler:1.0-rc5'
 
     // Http logger
     compile 'com.squareup.okhttp:logging-interceptor:2.6.0'
@@ -45,6 +45,10 @@ dependencies {
 
     // RxAndroid
     compile 'io.reactivex:rxandroid:1.0.1'
+
+    // RxLifecycle
+    compile 'com.trello:rxlifecycle:0.4.0'
+    compile 'com.trello:rxlifecycle-components:0.4.0'
 
     // Dagger
     compile 'com.google.dagger:dagger:2.0.1'
