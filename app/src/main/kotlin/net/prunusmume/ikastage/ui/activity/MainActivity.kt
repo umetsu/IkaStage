@@ -9,6 +9,7 @@ import net.prunusmume.ikastage.R
 import net.prunusmume.ikastage.databinding.ActivityMainBinding
 import net.prunusmume.ikastage.entity.Schedule
 import net.prunusmume.ikastage.network.IkaStageService
+import net.prunusmume.ikastage.ui.adapter.ScheduleListAdapter
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
 import javax.inject.Inject
@@ -23,13 +24,18 @@ class MainActivity : RxAppCompatActivity() {
     @Inject
     lateinit var mIkaStageService: IkaStageService
 
+    private lateinit var mAdapter: ScheduleListAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         IkaStageApplication.appComponent.inject(this)
 
-        var binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
-        binding.text.text = "Hello"
+        val binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
+
+        mAdapter = ScheduleListAdapter(this)
+        binding.recyclerView.adapter = mAdapter
+        binding.recyclerView.setHasFixedSize(true)
 
         loadSchedules()
     }
@@ -48,6 +54,7 @@ class MainActivity : RxAppCompatActivity() {
         // うまくSAM変換できないっぽい？仕方ないので関数を作って返すことにする
         return { schedules ->
             Log.d(TAG, "$schedules")
+            mAdapter.addAll(schedules)
         }
     }
 
