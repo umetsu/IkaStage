@@ -1,4 +1,4 @@
-package net.prunusmume.ikastage.ui.activity
+package net.prunusmume.ikastage.presentation.view.activity
 
 import android.databinding.DataBindingUtil
 import android.os.Bundle
@@ -9,7 +9,7 @@ import net.prunusmume.ikastage.R
 import net.prunusmume.ikastage.databinding.ActivityMainBinding
 import net.prunusmume.ikastage.entity.Schedule
 import net.prunusmume.ikastage.network.IkaStageService
-import net.prunusmume.ikastage.ui.adapter.ScheduleListAdapter
+import net.prunusmume.ikastage.presentation.view.adapter.ScheduleListAdapter
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
 import javax.inject.Inject

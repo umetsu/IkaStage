@@ -1,4 +1,4 @@
-package net.prunusmume.ikastage.ui.adapter
+package net.prunusmume.ikastage.presentation.view.adapter
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
