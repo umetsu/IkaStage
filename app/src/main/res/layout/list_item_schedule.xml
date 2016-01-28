@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="net.prunusmume.ikastage.presentation.viewmodel.ListItemScheduleViewModel" />
+    </data>
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
@@ -18,8 +27,9 @@
                 android:id="@+id/time_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="07:00 ~ 11:00"
-                android:textSize="24sp" />
+                android:text="@{viewModel.time}"
+                android:textSize="24sp"
+                tools:text="07:00 ~ 11:00" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -31,8 +41,9 @@
                     android:id="@+id/regular_battle_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="レギュラーマッチ"
-                    android:textSize="20sp" />
+                    android:text="@{viewModel.regularBattle}"
+                    android:textSize="20sp"
+                    tools:text="ナワバリバトル" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -52,14 +63,16 @@
                             android:layout_height="wrap_content"
                             android:adjustViewBounds="true"
                             app:ariv_heightRatio="9"
-                            app:ariv_widthRatio="16" />
+                            app:ariv_widthRatio="16"
+                            bind:imageUrl="@{viewModel.regularFirstStageImageUrl}" />
 
                         <TextView
                             android:id="@+id/regular_stage_name_text1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:text="デカライン高架下" />
+                            android:text="@{viewModel.regularFirstStageName}"
+                            tools:text="デカライン高架下" />
 
                     </LinearLayout>
 
@@ -79,14 +92,16 @@
                             android:layout_height="wrap_content"
                             android:adjustViewBounds="true"
                             app:ariv_heightRatio="9"
-                            app:ariv_widthRatio="16" />
+                            app:ariv_widthRatio="16"
+                            bind:imageUrl="@{viewModel.regularSecondStageImageUrl}" />
 
                         <TextView
                             android:id="@+id/regular_stage_name_text2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:text="ヒラメが丘団地" />
+                            android:text="@{viewModel.regularSecondStageName}"
+                            tools:text="ヒラメが丘団地" />
 
                     </LinearLayout>
 
@@ -107,16 +122,18 @@
                     android:id="@+id/ranked_battle_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="ガチマッチ"
-                    android:textSize="20sp" />
+                    android:text="@{viewModel.rankedBattle}"
+                    android:textSize="20sp"
+                    tools:text="ガチマッチ" />
 
                 <TextView
                     android:id="@+id/ranked_battle_mode_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:text="ガチエリア"
-                    android:textSize="16sp" />
+                    android:text="@{viewModel.rankedBattleMode}"
+                    android:textSize="16sp"
+                    tools:text="ガチエリア" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -136,14 +153,16 @@
                             android:layout_height="wrap_content"
                             android:adjustViewBounds="true"
                             app:ariv_heightRatio="9"
-                            app:ariv_widthRatio="16" />
+                            app:ariv_widthRatio="16"
+                            bind:imageUrl="@{viewModel.rankedFirstStageImageUrl}" />
 
                         <TextView
                             android:id="@+id/ranked_stage_name_text1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:text="キンメダイ美術館" />
+                            android:text="@{viewModel.rankedFirstStageName}"
+                            tools:text="キンメダイ美術館" />
 
                     </LinearLayout>
 
@@ -163,14 +182,16 @@
                             android:layout_height="wrap_content"
                             android:adjustViewBounds="true"
                             app:ariv_heightRatio="9"
-                            app:ariv_widthRatio="16" />
+                            app:ariv_widthRatio="16"
+                            bind:imageUrl="@{viewModel.rankedSecondStageImageUrl}" />
 
                         <TextView
                             android:id="@+id/ranked_stage_name_text2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:text="ショッツル鉱山" />
+                            android:text="@{viewModel.rankedSecondStageName}"
+                            tools:text="ショッツル鉱山" />
 
                     </LinearLayout>
 
