@@ -31,10 +31,14 @@ class MainActivity : RxAppCompatActivity(), MainViewModel.Listener {
         viewModel.destroy()
     }
 
+    override fun onClearSchedules() {
+        val adapter = binding.recyclerView.adapter as ScheduleListAdapter
+        adapter.clear()
+    }
+
     override fun onSchedulesChanged(schedules: MutableList<Schedule>) {
         val adapter = binding.recyclerView.adapter as ScheduleListAdapter
         adapter.addAll(schedules)
-        adapter.notifyDataSetChanged()
     }
 
     private fun setUpRecyclerView(recyclerView: RecyclerView) {

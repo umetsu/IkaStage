@@ -38,6 +38,11 @@ class ScheduleListAdapter(private val mContext: Context) : RecyclerView.Adapter<
         notifyDataSetChanged()
     }
 
+    fun clear() {
+        mSchedules.clear()
+        notifyDataSetChanged()
+    }
+
     class ViewHolder(val binding: ListItemScheduleBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bindSchedule(schedule: Schedule) {
             if (binding.viewModel == null) {
