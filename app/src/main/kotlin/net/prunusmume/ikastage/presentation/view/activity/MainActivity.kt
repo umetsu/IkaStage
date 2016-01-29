@@ -2,66 +2,44 @@ package net.prunusmume.ikastage.presentation.view.activity
 
 import android.databinding.DataBindingUtil
 import android.os.Bundle
-import android.util.Log
+import android.support.v7.widget.RecyclerView
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity
-import net.prunusmume.ikastage.IkaStageApplication
 import net.prunusmume.ikastage.R
 import net.prunusmume.ikastage.databinding.ActivityMainBinding
 import net.prunusmume.ikastage.entity.Schedule
-import net.prunusmume.ikastage.network.IkaStageService
 import net.prunusmume.ikastage.presentation.view.adapter.ScheduleListAdapter
-import rx.android.schedulers.AndroidSchedulers
-import rx.schedulers.Schedulers
-import javax.inject.Inject
+import net.prunusmume.ikastage.presentation.viewmodel.MainViewModel
 
 
-class MainActivity : RxAppCompatActivity() {
+class MainActivity : RxAppCompatActivity(), MainViewModel.Listener {
 
-    companion object {
-        val TAG = MainActivity::class.java.simpleName
-    }
-
-    @Inject
-    lateinit var mIkaStageService: IkaStageService
-
-    private lateinit var mAdapter: ScheduleListAdapter
+    private lateinit var viewModel: MainViewModel
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        IkaStageApplication.appComponent.inject(this)
+        binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
+        viewModel = MainViewModel(this)
+        binding.viewModel = viewModel
 
-        val binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
-
-        mAdapter = ScheduleListAdapter(this)
-        binding.recyclerView.adapter = mAdapter
-        binding.recyclerView.setHasFixedSize(true)
-
-        loadSchedules()
+        setUpRecyclerView(binding.recyclerView)
     }
 
-    private fun loadSchedules() {
-        mIkaStageService.schedules()
-                .compose(bindToLifecycle<MutableList<Schedule>>())
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(createLoadSuccessListener(),
-                        createLoadFailureListener())
+    override fun onDestroy() {
+        super.onDestroy()
+        viewModel.destroy()
     }
 
-    private fun createLoadSuccessListener(): (MutableList<Schedule>) -> Unit {
-        // onSuccess(MutableList<Schedule>) -> Unit みたいなメソッドを関数リファレンスで引数に渡そうとすると
-        // うまくSAM変換できないっぽい？仕方ないので関数を作って返すことにする
-        return { schedules ->
-            Log.d(TAG, "$schedules")
-            mAdapter.addAll(schedules)
-        }
+    override fun onSchedulesChanged(schedules: MutableList<Schedule>) {
+        val adapter = binding.recyclerView.adapter as ScheduleListAdapter
+        adapter.addAll(schedules)
+        adapter.notifyDataSetChanged()
     }
 
-    private fun createLoadFailureListener(): (Throwable) -> Unit {
-        return { error ->
-            Log.e(TAG, "$error")
-        }
+    private fun setUpRecyclerView(recyclerView: RecyclerView) {
+        val adapter = ScheduleListAdapter(this)
+        recyclerView.adapter = adapter
+        recyclerView.setHasFixedSize(true)
     }
-
 }
