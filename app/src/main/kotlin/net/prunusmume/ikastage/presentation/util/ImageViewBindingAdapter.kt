@@ -8,7 +8,7 @@ import com.bumptech.glide.Glide
 /**
  * Created by umetsu_kentaro on 16/01/28.
  */
-object DataBindingAttribute {
+object ImageViewBindingAdapter {
 
     @BindingAdapter("bind:imageUrl")
     @JvmStatic
