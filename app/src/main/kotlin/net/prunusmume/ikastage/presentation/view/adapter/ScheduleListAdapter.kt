@@ -12,34 +12,34 @@ import java.util.*
 /**
  * Created by umetsu_kentaro on 16/01/14.
  */
-class ScheduleListAdapter(private val mContext: Context) : RecyclerView.Adapter<ScheduleListAdapter.ViewHolder>() {
+class ScheduleListAdapter(private val context: Context) : RecyclerView.Adapter<ScheduleListAdapter.ViewHolder>() {
 
-    private val mSchedules = ArrayList<Schedule>()
-    private val mLayoutInflater: LayoutInflater
+    private val schedules = ArrayList<Schedule>()
+    private val layoutInflater: LayoutInflater
 
     init {
-        mLayoutInflater = LayoutInflater.from(mContext)
+        layoutInflater = LayoutInflater.from(context)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
-        return ViewHolder(ListItemScheduleBinding.inflate(mLayoutInflater, parent, false))
+        return ViewHolder(ListItemScheduleBinding.inflate(layoutInflater, parent, false))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bindSchedule(mSchedules[position])
+        holder.bindSchedule(schedules[position])
     }
 
     override fun getItemCount(): Int {
-        return mSchedules.size
+        return schedules.size
     }
 
     fun addAll(list: MutableList<Schedule>) {
-        mSchedules.addAll(list)
+        schedules.addAll(list)
         notifyDataSetChanged()
     }
 
     fun clear() {
-        mSchedules.clear()
+        schedules.clear()
         notifyDataSetChanged()
     }
 

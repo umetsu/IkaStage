@@ -16,12 +16,12 @@ import javax.inject.Singleton
 
 
 @Module
-class AppModule(private val mApplication: IkaStageApplication) {
+class AppModule(private val application: IkaStageApplication) {
 
     @Provides
     @Singleton
     fun provideApplication(): Application {
-        return mApplication
+        return application
     }
 
     @Provides
