@@ -8,8 +8,7 @@ import android.support.v4.widget.SwipeRefreshLayout
  * Created by umetsu_kentaro on 16/01/29.
  */
 @BindingMethods(
-        BindingMethod(type = SwipeRefreshLayout::class, attribute = "bind:onRefresh", method = "setOnRefreshListener"),
-        BindingMethod(type = SwipeRefreshLayout::class, attribute = "bind:refreshing", method = "setRefreshing")
+        BindingMethod(type = SwipeRefreshLayout::class, attribute = "bind:onRefresh", method = "setOnRefreshListener")
 )
 object SwipeRefreshLayoutBindingAdapter {
 }
