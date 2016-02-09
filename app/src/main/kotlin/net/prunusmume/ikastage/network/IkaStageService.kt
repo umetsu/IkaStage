@@ -7,7 +7,7 @@ import rx.Observable
 /**
  * Created by umetsu_kentaro on 16/01/05.
  */
-public interface IkaStageService {
+interface IkaStageService {
 
     @GET("/v1/schedules")
     fun schedules(): Observable<MutableList<Schedule>>
