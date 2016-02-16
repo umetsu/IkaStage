@@ -24,7 +24,6 @@
             android:padding="8dp">
 
             <TextView
-                android:id="@+id/time_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@{viewModel.time}"
@@ -38,7 +37,6 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/regular_battle_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@{viewModel.regularBattle}"
@@ -58,7 +56,6 @@
                         android:orientation="vertical">
 
                         <com.github.chuross.AspectRatioImageView
-                            android:id="@+id/regular_stage_image1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:adjustViewBounds="true"
@@ -67,7 +64,6 @@
                             bind:imageUrl="@{viewModel.regularFirstStageImageUrl}" />
 
                         <TextView
-                            android:id="@+id/regular_stage_name_text1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"
@@ -87,7 +83,6 @@
                         android:orientation="vertical">
 
                         <com.github.chuross.AspectRatioImageView
-                            android:id="@+id/regular_stage_image2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:adjustViewBounds="true"
@@ -96,7 +91,6 @@
                             bind:imageUrl="@{viewModel.regularSecondStageImageUrl}" />
 
                         <TextView
-                            android:id="@+id/regular_stage_name_text2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"
@@ -119,7 +113,6 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/ranked_battle_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@{viewModel.rankedBattle}"
@@ -127,7 +120,6 @@
                     tools:text="ガチマッチ" />
 
                 <TextView
-                    android:id="@+id/ranked_battle_mode_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
@@ -148,7 +140,6 @@
                         android:orientation="vertical">
 
                         <com.github.chuross.AspectRatioImageView
-                            android:id="@+id/ranked_stage_image1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:adjustViewBounds="true"
@@ -157,7 +148,6 @@
                             bind:imageUrl="@{viewModel.rankedFirstStageImageUrl}" />
 
                         <TextView
-                            android:id="@+id/ranked_stage_name_text1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"
@@ -177,7 +167,6 @@
                         android:orientation="vertical">
 
                         <com.github.chuross.AspectRatioImageView
-                            android:id="@+id/ranked_stage_image2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:adjustViewBounds="true"
@@ -186,7 +175,6 @@
                             bind:imageUrl="@{viewModel.rankedSecondStageImageUrl}" />
 
                         <TextView
-                            android:id="@+id/ranked_stage_name_text2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"
